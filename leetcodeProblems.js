@@ -51,3 +51,62 @@ var romanToInt = function(s) {
        return number
     
 };
+
+
+//longest common prefix. 
+
+// Write a function to find the longest common prefix string amongst an array of strings.
+
+// If there is no common prefix, return an empty string "".
+
+
+
+var longestCommonPrefix = function(strs) {
+    //given an array of strings find out how they start the same. if they do not start the same return empty string
+    //input => array of strings
+    //output => string of common letters at the beginning of all the words in array
+    //if no common return ""
+
+    //["hi", "high", "height"] => "h"
+    //["dog", "car", "bird"] => ""
+
+    //take the first word and compare it to the next word.
+    //compare each letter to see if they match. if they match add letter to an array. once they stop matching stop and move to next letter
+    //this time compare letters in the array to the rest of the words. 
+    //if they all match move to next word
+    //if they do not match remove a letter from the array
+    //once went through all words join the array and return it.
+
+    let commonLetters = []
+
+    if(strs.length == 1){
+        return strs[0]
+    }
+
+    for(word of strs){
+        if(word == strs[0]){
+        for(let i = 0; i < word.length; i++){
+            if(word[i] == strs[1][i]){
+                commonLetters.push(word[i])
+            } else {
+                break;
+            }
+        }
+    } else{
+        if(commonLetters.length == 0){
+            break;
+        }
+        for(let i = 0; i < commonLetters.length; i++){
+            if(commonLetters[i] !== word[i]){
+                let num = (commonLetters.length + 1) - i;
+                commonLetters.splice(i,num)
+                break;
+            }
+        }
+    }
+    }
+
+  
+    return commonLetters.length == 0 ? "" : commonLetters.join('')
+   
+};
