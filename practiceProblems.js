@@ -174,6 +174,7 @@ function areThereDuplicates(...args){
     //use two pointers to progress throught the input
     //pointers can start anywhere
     //pointers can go in any direction
+    //only used on sorted stuff
 
 function countUniqueValues(arr){
 
@@ -212,3 +213,111 @@ function countUniqueValues(arr){
     return pointer1
 
 }
+
+function areThereDuplicatesPointer(...args){
+    //understand
+        //input can be anything and can have different number of inputs
+        //check the inputs to see if there are any duplicates in the inputs
+        //if a duplicate input return true else return false
+    //break down
+        //use rest parameter to take multiple arguments into an array
+        //sort args array
+        //create my pointers. left will start at beginning and right will start at next one
+        //check both pointers to see if they equal each other
+        //if they equal each other increase both pointers by 1.
+        //if they do not eqaul each other increase right pointer
+        //do this till right pointer is at the end.
+        //if there is a match return true
+        //if there is no match return false after right pointer hits the end
+    console.log(args)
+        args.sort()
+        console.log(args)
+        let lPoint = 0
+        let rPoint = 1
+
+        while(rPoint < args.length){
+            if(args[lPoint] == args[rPoint]){
+                return true
+            } else {
+                lPoint++
+                rPoint++
+            }
+        }
+
+        return false
+
+}
+
+function averagePair(array, targetAvg){
+    //understand
+        //input sorted array of numbers and a number that represents a target average
+        //check to see if there are two elements of the given array that have an average of give target
+        //if they do return true
+        //if not return false
+
+    //break down
+        //create two pointers to go through the array.
+        //left pointer start at 0 and second start at 1
+        //find average of both pointers and check against target value
+        //if a match return true
+        //if not continue untill the right pointer is out side of the array
+
+    if(array.length < 2){
+        return false
+    }
+
+    let lPoint = 0
+    let rPoint = array.length - 1
+
+    while (rPoint > lPoint){
+        let average = (array[lPoint] + array[rPoint]) / 2
+        if(average == targetAvg){
+            return true
+        }
+        if (average < targetAvg){
+            lPoint++
+        } else {
+            rPoint--
+        }
+
+    }
+
+    return false
+}
+
+function isSubsequence(str1, str2){
+    //understand
+        //inputs 2 strings
+        //look to see if the same letters in str1 are in str2. They must be in the same order but do not have to be together
+        //return true or false depending if str1 letters are in str2 and in corrrect order
+    //break down
+        //create two pointers. one will be for string 1 and second for str2.
+        //start both pointers at first letter in word. 
+            //if a match increase each pointer by 1.
+            // if no match increase str2 pointer by 1
+            //do this till pointer is out of bounds
+                //if str1 pointer is out of bounds then return true if str2 pointer is out of bounds return false
+
+    let str1Point = 0
+    let str2Point = 0
+
+    while(str2Point < str2.length){
+        if(str1Point >= str1.length - 1){
+            return true
+        }
+        if(str1[str1Point] !== str2[str2Point]){
+            str2Point++
+        }
+
+        if(str1[str1Point]== str2[str2Point]){
+            str1Point++
+            str2Point++
+        }
+
+        
+    }
+
+    return false
+}
+
+
