@@ -110,3 +110,4 @@ var longestCommonPrefix = function(strs) {
     return commonLetters.length == 0 ? "" : commonLetters.join('')
    
 };
+

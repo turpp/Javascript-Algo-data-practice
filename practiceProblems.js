@@ -79,6 +79,96 @@ console.log(charMap2)
     return true
 }
 
+function sameFrequency(num1, num2){
+    //understand
+        //two inputs. both are positive numbers.
+        //check to see if both inputs contain the same numbers and the same amount of each number
+        //return true or false
+    //examples
+        //123, 321 => true
+        //123, 1234 => false
+        //123, 543 => false
+    //break down
+        //Take each number and turn it into an array.
+        //loop through array and create an object with number as key and how many times it occurs as the value
+        //compare each object to make sure its the same.
+        //if same return true if not false
+
+    let freqObj1 = {}
+    let freqObj2 = {}
+
+    let arr1 = Array.from(String(num1), Number)
+    let arr2 = Array.from(String(num2), Number)
+    
+
+    if(arr1.length !== arr2.length){
+        return false
+    }
+
+    for(let num of arr1){
+        if(freqObj1[num]){
+            freqObj1[num] +=1
+        } else {
+            freqObj1[num] = 1
+        }
+    }
+
+    for(num of arr2){
+        if(freqObj2[num]){
+            freqObj2[num] +=1
+        } else {
+            freqObj2[num] = 1
+        }
+    }
+    console.log(freqObj1)
+    console.log(freqObj2)
+
+    for(key in freqObj1){
+        if(freqObj2[key] && ( freqObj1[key] == freqObj2[key])){
+            
+        } else {
+            return false
+        }
+    }
+
+    return true
+
+
+
+        
+}
+
+function areThereDuplicates(...args){
+    //understand
+        //input can be be anything and also can vary in number of aruguments
+        //check the input to see if there are any duplicate inputs
+        //return true or false
+    //breakdown
+        //use the rest operator to allow function to take multiple arguments and also produce an array of the arguemnts to iterate through
+        //produce and object with key of argument and the value the number of times it is in our arg array
+        //look through the object and see if there are any value of two.
+        //if value of two return false else return true
+
+    let argMap = {}
+    for(let arg of args){
+        if(argMap[arg]){
+            argMap[arg] += 1
+        } else {
+            argMap[arg] = 1
+        }
+    }
+
+
+    for(let key in argMap){
+        if(argMap[key] == 2){
+            return true
+        }
+    }
+
+    return false
+
+}
+
 //Multiple Pointers
     // use with strings and arrays
     //use two pointers to progress throught the input
