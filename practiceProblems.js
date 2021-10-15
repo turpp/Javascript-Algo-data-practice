@@ -321,3 +321,46 @@ function isSubsequence(str1, str2){
 }
 
 
+
+//==============Sliding Window=====================
+//useful for keeping tract of a subset of data in an array/string
+//create a window and move the window depending on a condition
+//does not have to be sorted
+
+function maxSubarraySum(array, length){
+    //understand
+        //input is an array of number and a number that represents the lenght of the subset we will find the sum to
+        //I take the input and find out what the largest sum of contiunious elements in the array for the length of the passed in
+        //return the sum
+    //examples
+        //[1,2,3,4], 2 => 7
+        //[100,200,300], 1 => 300
+    //break down 
+        //make a window of length elements
+        //find the sum of the first window
+        //then iterate through array moving the window over one element at a time
+        //find sum of each window and compare it to the current max sum. save the highest
+        //once finished throught he array return the max sum
+
+    let maxSum = 0;
+   
+    for(let i = 0; i < length; i++){
+      maxSum += array[i]
+    }
+
+    console.log(maxSum)
+
+    let tempSum = maxSum
+    for(let i = length; i < array.length; i++){
+        tempSum += array[i]-array[i-length]
+        console.log("front", array[i-length], "back", array[length], "old max", maxSum)
+        console.log("tempSum", tempSum)
+        console.log('i =', i)
+        if(tempSum > maxSum){
+            maxSum = tempSum
+        }
+    }
+
+    return maxSum
+}
+   
