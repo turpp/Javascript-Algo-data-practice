@@ -111,3 +111,23 @@ var longestCommonPrefix = function(strs) {
    
 };
 
+
+
+//======Palindrome Number==========
+ function isPalindrome(int){
+    //understand given a number check to see if it is a plaidrome if it is return true if not false
+
+    //breakdown
+        //take number and split it into an array and then reverse the array
+        //then compare the two arrays. if they are the same then true if not return false
+
+    if(int < 0){
+        return false
+    }
+
+    let intArr = String(int).split("")
+    let reversedIntArr = [...intArr]
+
+    return intArr.join("") == reversedIntArr.reverse().join("") ? true : false
+ }
+
