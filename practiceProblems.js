@@ -363,4 +363,48 @@ function maxSubarraySum(array, length){
 
     return maxSum
 }
-   
+
+
+function minSubArrayLen(array, int){
+    //understand
+        //inputs => array of positive numbers. an positive number to sum up to
+        //given an array. find out the least number of elements needed to add up to the last number. Must be next to each other. if none equals it then return 0
+
+    //break down
+        //use slidingwindow method.
+        //loop through the length of the array. 
+        //start with a window of 1 and then move up to a window of array.lenght
+        //sum the window to see if it is equal to int or more.
+        //at anytime it is then return the length of the window.
+        //if you go all the way through the loop and never equal or greater than int return 0.
+
+        function minSubArrayLen(nums, sum) {
+            let total = 0;
+            let start = 0;
+            let end = 0;
+            let minLen = Infinity;
+           
+            while (start < nums.length) {
+              // if current window doesn't add up to the given sum then 
+                  // move the window to right
+              if(total < sum && end < nums.length){
+                total += nums[end];
+                      end++;
+              }
+              // if current window adds up to at least the sum given then
+                  // we can shrink the window 
+              else if(total >= sum){
+                minLen = Math.min(minLen, end-start);
+                      total -= nums[start];
+                      start++;
+              } 
+              // current total less than required total but we reach the end, need this or else we'll be in an infinite loop 
+              else {
+                break;
+              }
+            }
+           
+            return minLen === Infinity ? 0 : minLen;
+          }
+        
+}
