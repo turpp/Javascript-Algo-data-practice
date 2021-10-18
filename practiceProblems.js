@@ -408,3 +408,96 @@ function minSubArrayLen(array, int){
           }
         
 }
+
+
+
+
+//recursion practice
+
+function power(base, exp){
+    //understand
+        //inputs => base to be multipled by itself over and over determined by the exp input. all positive number inputs
+    //examples
+        //[2,2]=> 2 * 2 = 4
+        //[2,4] => 2 * 2 * 2 * 2 = 16
+    //breakdown
+        //solution must be recusrse
+        //we will take the base and mulitple it by itself over and over
+        //base case will be my exponent down to zero
+        //decrease exp each recursive call
+        
+
+    if(exp === 0) return 1
+    if(exp === 1 ) return base
+
+    let newExp = exp - 1
+    return base * power(base, newExp)
+
+
+    
+}
+
+
+function factorial(number){
+    //understand
+        //given a positive number return its factorial.
+        //answer must be recursive
+    //breakdown
+        //base case will be number at 1 to return it
+        //different input will be decreaseing the number by one each time
+        //return will be number times the factorial function with new num
+
+    if(number === 0){
+        return 1
+    }
+
+    if(number === 1){
+        return 1
+    }
+
+    let newNumber = number - 1
+
+    return number * factorial(newNumber)
+}
+
+function productOfArray(array){
+    //understand
+        //input is an array of numbers
+        //go through the array and mulitply each number togehter to a product and return it.
+    //breakdown
+        //edge case will if array is 0 return 0
+        //base case will be array at 0 length
+        //different input will be decreasing the size of array by 1
+
+    if(array.length === 0 ){
+        return 0
+    }
+
+    if(array.length === 1){
+        return array[0]
+    }
+
+    let newArr = array.slice(1)
+
+    return array[0] * productOfArray(newArr)
+
+
+}
+
+function recursiveRange(num){
+    //understand
+        //takes in a positive number and adds up all the numbers from num to 0
+        //return the sum of all the numbers
+    //breakdown
+        //base case will be num = 1
+        //different input will be decreasing number by 1
+        //return willl be num plus recusrive call
+
+    if(num === 1){
+        return 1
+    }
+
+    let newNum = num - 1
+
+    return num + recursiveRange(newNum)
+}
