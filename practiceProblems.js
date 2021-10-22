@@ -501,3 +501,136 @@ function recursiveRange(num){
 
     return num + recursiveRange(newNum)
 }
+
+
+
+
+
+
+//==================problems from mock interviwe===============
+// 1- reverse a string (without using str.reverse())
+
+function reverseStr(str){
+    //understand
+        //input is a string and I need to reverse the sting with out using the reverse method on the string
+    //breakdown
+        //creat an empty array
+        //iterate through the string and either unshift from start or push if going in reverse
+        //join the string and return it
+
+        let revArr = []
+
+        for(let i = str.length - 1; i >= 0; i--){
+            revArr.push(str[i])
+        }
+
+        return revArr.join('')
+}
+
+
+// find out if a word is palindrome. kayak mom racecar
+
+function isPalindrom(str){
+    //understand
+        //given a string find out if it is a palindrom.
+    //breakdown
+        //a palidrom is the same back and forth.
+        //take the string and compare it to the reversed string to see if it is the same.
+        //to find out if sentences are I need to use regex
+
+    let lowercaseStr = str.toLowerCase()
+    return lowercaseStr === lowercaseStr.split("").reverse().join("") ? true : false
+}
+
+// given an array of integers find the most repeated number.
+function mostRepeated(arr){
+    //understand
+        //given an array of numbers find out which number occurs the most
+    //breakdown
+        //loop through the array and keep track of how many times a number comes up
+        //return the number that has the most occurences
+
+    let objMap = {}
+    let numberOfRep = 0
+    let mostRepeated
+
+    for(num of arr){
+        if(objMap[num]){
+            objMap[num] += 1
+        } else {
+            objMap[num] = 1
+        }
+    }
+
+    for(key in objMap){
+        if(objMap[key] > numberOfRep){
+            numberOfRep = objMap[key]
+            mostRepeated = key
+        }
+    }
+
+    return mostRepeated
+}
+
+
+
+//=========Problem from ArcBest========
+
+//Given a string of letters that represent the week seperated by , return a string with the days given and Underscore for the days not given
+
+
+//assumptions => week starts on a sunday and sunday is represented by u. input can be a mix of lowercase and capital letters and also unsorted according to calendar week
+function daysOfWeek(str){
+    //created array for edge case of empty string and also to replace _ with correct letter
+    let resultArr = ["_","_","_","_","_","_","_"]
+
+    //removed the ,  to get just letters and also lowercase incase there are any capital letters in input
+    let cleanStr = str.replace(/[,]+/g, "").toLowerCase()
+
+    //iterate through each letter of the cleanStr. Depending on what letter will determine what it replaces in the resultArr
+    //switch statement allows for the input to be unsorted and still get a sorted result
+    for(char of cleanStr){
+        switch(char){
+            case 'u':
+                resultArr[0] = 'u'
+                break
+            case 'm':
+                resultArr[1] = 'm'
+                break
+            case 't':
+                resultArr[2] = 't'
+                break;
+            case 'w':
+                resultArr[3] = 'w'
+                break;
+            case 'r':
+                resultArr[4] = 'r'
+                break;
+            case 'f':
+                resultArr[5] = 'f'
+                break;
+            case 's':
+                resultArr[6] = 's'
+                break;
+            default:
+                
+        }
+    }
+    //join the array to return a string
+    return resultArr.join(",")
+}
+
+daysOfWeek("m,t,w") 
+// => '_,m,t,w,_,_,_' 
+
+daysOfWeek("u,r,f") 
+// => 'u,_,_,_,r,f,_'
+
+daysOfWeek('U,m,R,s') 
+// => 'u,m,_,_,r,_,s'
+
+daysOfWeek('') 
+// => '_,_,_,_,_,_,_'
+
+
+
