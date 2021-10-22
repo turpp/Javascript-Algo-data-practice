@@ -133,3 +133,42 @@ function fib(num,arr){
 }
 
 
+//==============harder set of problems ====================
+
+function reverse(str){
+    //understand
+        //input will be a string
+        //use recursion to take the string and return it in reverse order
+    //example
+        //"hi" => "ih"
+        //"Tripp" => "ppirT"
+    
+    //breakdown
+        //will use a helper method for my recurison
+        //create an array outside of helper that I will unshift everthing into
+        //return the new array
+        // base case will be till str goes down to zero
+        // 
+
+
+    let strArr = str.split("")
+    let reversedArr = []
+
+    function recursive(array){
+        if(array.length === 1){
+            reversedArr.unshift(array[0])
+            return
+        }
+
+        reversedArr.unshift(array[0])
+
+        let newArr = array.slice(1)
+        return recursive(newArr)
+    }
+
+    recursive(strArr)
+
+    return reversedArr.join("")
+    
+
+}
