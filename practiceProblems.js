@@ -688,3 +688,22 @@ function bubbleSortAcc(arr){
 
     return arr
 }
+
+
+//===============binary search================
+function binarySearch(array, number){
+    let left = 0
+    let right = array.length - 1
+    let mid = Math.floor((left + right)/2)
+
+    while(array[mid] !== number && left <= right){
+        if(number < array[mid]){
+            right = mid - 1
+        } else {
+            left = mid + 1
+        }
+        mid = Math.floor((left + right)/2)
+    }
+
+    return array[mid] === number ? array[mid] : -1
+}
