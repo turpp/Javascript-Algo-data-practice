@@ -634,3 +634,57 @@ daysOfWeek('')
 
 
 
+//=============naive string search===========
+//given a string and sub string. find out how many times the sub string is inside of the larger string
+function subStringRepeat(lstr, str){
+
+    //examples
+        //"womgfhsomg", "omg" =2
+    let numOfRepeats = 0
+    
+    for(let i = 0; ){
+        let i = 0
+        while(i < str.length){
+            if(char !== str[i]){
+                i = str.length
+            }
+
+            i++
+            
+        }
+
+   
+
+        if(i === str.length){
+            numOfRepeats++
+        }
+    }
+
+    return numOfRepeats
+}
+
+
+
+
+
+//========bubble sort=======
+//[3,2,1]
+function bubbleSortAcc(arr){
+    
+    for(let i = arr.length - 1; i >= 0; i--){
+        let noSwaps
+        for(let j = 0; j < i - 1 ; j++){
+            if(arr[j] > arr[j+1]){
+                let temp = arr[j]
+                arr[j] = arr[j+1]
+                arr[j+1] = temp
+                noSwaps = false
+            }
+        }
+        if(noSwaps){
+            break;
+        }
+    }
+
+    return arr
+}
