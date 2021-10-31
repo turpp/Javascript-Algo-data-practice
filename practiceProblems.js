@@ -707,3 +707,48 @@ function binarySearch(array, number){
 
     return array[mid] === number ? array[mid] : -1
 }
+
+
+//==========merge sort==================
+//below the arrays two input array have to be already sorted. this is my helper function for the mergeSort
+function mergeArrays(arr1, arr2){
+
+    let i = 0
+    let j = 0
+    let resultArr = []
+
+    while(i < arr1.length && j < arr2.length){
+        if(arr1[i] < arr2[j]){
+            resultArr.push(arr1[i])
+            i++
+        } else {
+            resultArr.push(arr2[j])
+            j++
+        }
+    }
+
+    while(i < arr1.length){
+        resultArr.push(arr1[i])
+        i++
+    }
+
+    while(j < arr2.length){
+        resultArr.push(arr2[j])
+        j++
+    }
+    return resultArr
+}
+//this is a recursive solution and will use helper function above
+//works by calling mergeSort over and over till it is reduced to one element array. then that will give an answer for the left and then right then the merge arrays get called on the two sorted halfs left and right
+//big time complexety 0(n log n)
+function mergeSort(array){
+    //base case
+    if(array.length === 1){
+        return array
+    }
+    let mid = Math.floor(array.length/2)
+    let left = mergeSort(array.slice(0, mid))
+    let right = mergeSort(array.slice(mid))
+
+    return mergeArrays(left, right)
+}
