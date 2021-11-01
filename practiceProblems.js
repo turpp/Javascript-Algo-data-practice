@@ -833,3 +833,22 @@ function getDigit(num, i) {
   } 
              
   quickSort([100,-3,2,4,6,9,1,2,5,3,23])
+
+
+  //===========insertion sort==================
+  //starts off with small sorted section and inserts where is needed
+  //first element will always be sorted so start with it 
+  //go to next wlement and swap if needed if not move to next iteration
+
+
+  function insertionSort(arr){
+	let currentVal;
+    for(let i = 1; i < arr.length; i++){
+        currentVal = arr[i];
+        for(let j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+            arr[j+1] = arr[j]
+        }
+        arr[j+1] = currentVal;
+    }
+    return arr;
+}
